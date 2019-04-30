@@ -8,7 +8,7 @@ adduser admin
 sed -i "\$s/$/\nadmin ALL=(ALL) ALL\n/" /etc/sudoers
 
 # Add admin user to allow ssh
-sed -i "s/wheel:x:10:root/wheel:x:10:root,admin" /etc/group
+sed -i "s/wheel:x:10:root/wheel:x:10:root,admin/" /etc/group
 
 # Uncomment comunity repositry
 sed -i "/v\d\.\d\/comunity/s/^#//" /etc/apk/repositories
@@ -24,8 +24,7 @@ service docker start
 mkdir /docker
 
 # Add Hyper-V tools
-VM=$(dmesg | grep "Hypervisor detected")
-if [ $VM == *"Microsoft Hyper-V"* ]
+if [ $(dmesg | grep "Hypervisor detected") == *"Microsoft Hyper-V"* ]
 then
     apk add hvtools
     rc-update add hv_fcopy_daemon
@@ -34,4 +33,7 @@ then
 fi
 
 # Reboot
+echo "Done -> About to reboot (5 sec)"
+sync
+wait 5
 reboot
