@@ -10,8 +10,8 @@ then
     echo "Please provide a os partition (eg sda2)"
 fi
 
-$boot=$1
-$os=$2
+boot=$1
+os=$2
 
 apk update
 apk add chrony e2fsprogs
