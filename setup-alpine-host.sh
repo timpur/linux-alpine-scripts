@@ -11,7 +11,7 @@ sed -i "\$s/$/\nadmin ALL=(ALL) ALL\n/" /etc/sudoers
 sed -i "s/wheel:x:10:root/wheel:x:10:root,admin/" /etc/group
 
 # Uncomment comunity repositry
-sed -i "/v\d\.\d\/comunity/s/^#//" /etc/apk/repositories
+sed -i "/v\d\.\d\/community/s/^#//" /etc/apk/repositories
 
 # Update and Upgrade
 apk update
@@ -35,5 +35,5 @@ fi
 # Reboot
 echo "Done -> About to reboot (5 sec)"
 sync
-wait 5
+sleep 5
 reboot

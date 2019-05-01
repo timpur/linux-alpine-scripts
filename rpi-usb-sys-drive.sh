@@ -27,5 +27,5 @@ sed -i 's/^/root=\/dev\/sda2 /' /media/sda1/cmdline.txt
 
 echo "Done -> About to reboot (5 sec)"
 sync
-wait 5
+sleep 5
 reboot
