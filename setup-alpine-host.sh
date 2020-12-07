@@ -1,3 +1,5 @@
+set -e
+
 # Add sudo and nano apks
 apk add sudo nano
 
