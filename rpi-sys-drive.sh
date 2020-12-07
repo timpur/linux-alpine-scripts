@@ -1,5 +1,7 @@
 # https://wiki.alpinelinux.org/wiki/Classic_install_or_sys_mode_on_Raspberry_Pi
 
+set -e
+
 if [ -z "$1"]
 then 
     echo "Please provide a boot partition (eg sda1)"
@@ -18,6 +20,7 @@ apk add chrony e2fsprogs
 
 service chronyd restart
 
+mkdir -p /mnt
 mount "/dev/$os" "/mnt"  # The second partition, in ext4 format, where Alpine Linux is installing in sys mode
 setup-disk -m sys /mnt
 mount -o remount,rw "/media/$boot"  # An update in the first partition is required for the next reboot.
